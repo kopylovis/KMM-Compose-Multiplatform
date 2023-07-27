@@ -1,7 +1,7 @@
 object ProjectDependencies {
 
-    const val kotlin_version = "1.8.20"
-    const val kotlin_compiler_extension_version = "1.4.6" //https://developer.android.com/jetpack/androidx/releases/compose-kotlin#declaring_dependencies
+    const val kotlin_version = "1.8.22"
+    const val kotlin_compiler_extension_version = "1.4.8" //https://developer.android.com/jetpack/androidx/releases/compose-kotlin#declaring_dependencies
     const val gradle_version = "8.0.0"
     const val compose_plugin_version = "1.4.3"
 
@@ -31,7 +31,7 @@ object ProjectDependencies {
     }
 
     object SQLDelite {
-        const val version = "2.0.0-rc02"
+        const val version = "2.0.0"
         const val runtime = "app.cash.sqldelight:runtime:$version"
         const val coroutines_extensions = "app.cash.sqldelight:coroutines-extensions:$version"
         const val driver_android = "app.cash.sqldelight:android-driver:$version"

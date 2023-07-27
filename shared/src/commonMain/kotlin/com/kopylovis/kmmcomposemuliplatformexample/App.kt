@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.screens.contactlist.ContactListScreen
 import com.kopylovis.kmmcomposemuliplatformexample.core.presentation.provideContactViewModel
 import com.kopylovis.kmmcomposemuliplatformexample.core.theme.AppTheme
-import com.kopylovis.kmmcomposemuliplatformexample.di.initKoin
 
 @Composable
 fun App(

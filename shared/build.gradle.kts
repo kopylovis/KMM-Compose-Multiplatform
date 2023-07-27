@@ -56,6 +56,7 @@ kotlin {
             dependencies {
                 implementation(ProjectDependencies.AndroidX.appcompat)
                 implementation(ProjectDependencies.AndroidX.activity_compose)
+                implementation(ProjectDependencies.SQLDelite.driver_android)
             }
         }
         val iosMain by getting {
@@ -84,6 +85,7 @@ sqldelight {
         create("ContactDatabase") {
             packageName.set("com.kopylovis.kmmcomposemultiplatformexample.database")
             srcDirs("sqldelight")
+            generateAsync.set(true)
         }
     }
 }
