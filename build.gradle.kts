@@ -5,6 +5,7 @@ plugins {
     kotlin("android").version(ProjectDependencies.kotlin_version).apply(false)
     kotlin("multiplatform").version(ProjectDependencies.kotlin_version).apply(false)
     id("org.jetbrains.compose").version(ProjectDependencies.compose_plugin_version).apply(false)
+    id("app.cash.sqldelight").version(ProjectDependencies.SQLDelite.version).apply(false)
 }
 
 tasks.register("clean", Delete::class) {

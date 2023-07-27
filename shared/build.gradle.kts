@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("app.cash.sqldelight")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -36,11 +37,14 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation(compose.compiler.auto)
                 implementation(ProjectDependencies.JetBrains.atomicfu)
                 implementation(ProjectDependencies.Koin.core)
                 ProjectDependencies.Moko.list.forEach { mokoDep ->
                     implementation(mokoDep)
                 }
+                implementation(ProjectDependencies.SQLDelite.runtime)
+                implementation(ProjectDependencies.SQLDelite.coroutines_extensions)
             }
         }
         val commonTest by getting {
@@ -56,6 +60,7 @@ kotlin {
         }
         val iosMain by getting {
             dependencies {
+                implementation(ProjectDependencies.SQLDelite.driver_native)
             }
             dependsOn(commonMain)
         }
@@ -71,5 +76,14 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+sqldelight {
+    databases {
+        create("ContactDatabase") {
+            packageName.set("com.kopylovis.kmmcomposemultiplatformexample.database")
+            srcDirs("sqldelight")
+        }
     }
 }

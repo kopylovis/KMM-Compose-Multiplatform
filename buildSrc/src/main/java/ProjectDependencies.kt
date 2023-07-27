@@ -30,4 +30,12 @@ object ProjectDependencies {
         const val core = "io.insert-koin:koin-core:$version"
     }
 
+    object SQLDelite {
+        const val version = "2.0.0-rc02"
+        const val runtime = "app.cash.sqldelight:runtime:$version"
+        const val coroutines_extensions = "app.cash.sqldelight:coroutines-extensions:$version"
+        const val driver_android = "app.cash.sqldelight:android-driver:$version"
+        const val driver_native = "app.cash.sqldelight:native-driver:$version" //for iOS, Windows, etc
+    }
+
 }
