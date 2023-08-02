@@ -14,6 +14,17 @@ object ProjectDependencies {
         const val activity_compose = "androidx.activity:activity-compose:1.7.2"
     }
 
+    object Voyager {
+        private const val version = "1.0.0-rc05"
+        const val navigator = "cafe.adriel.voyager:voyager-navigator:$version"
+        const val bottom_sheet_navigator = "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$version"
+        const val tab_navigator = "cafe.adriel.voyager:voyager-tab-navigator:$version"
+        const val transitions = "cafe.adriel.voyager:voyager-transitions:$version"
+        val list = listOf(
+            navigator, bottom_sheet_navigator, tab_navigator, transitions
+        )
+    }
+
     object Moko {
         private const val version = "0.16.1"
         const val core = "dev.icerock.moko:mvvm-core:$version"
