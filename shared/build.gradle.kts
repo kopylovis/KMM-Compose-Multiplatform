@@ -32,6 +32,7 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
+                implementation(compose.material)
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
@@ -40,6 +41,9 @@ kotlin {
                 implementation(ProjectDependencies.Koin.core)
                 ProjectDependencies.Moko.list.forEach { mokoDep ->
                     implementation(mokoDep)
+                }
+                ProjectDependencies.Voyager.list.forEach { voyagerDep ->
+                    implementation(voyagerDep)
                 }
             }
         }
