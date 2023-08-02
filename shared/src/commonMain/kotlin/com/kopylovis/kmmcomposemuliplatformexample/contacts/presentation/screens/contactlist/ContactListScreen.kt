@@ -33,7 +33,7 @@ import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.compone
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.contacts.ContactUIEvent
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.contacts.ContactUIState
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.screens.details.ContactDetailsScreen
-import com.kopylovis.kmmcomposemuliplatformexample.core.presentation.provideContactViewModel
+import com.kopylovis.kmmcomposemuliplatformexample.core.presentation.ViewModelFactory
 import com.kopylovis.kmmcomposemuliplatformexample.utils.TestUtils
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -46,7 +46,7 @@ object ContactListScreen: Screen, KoinComponent {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            val viewModel = provideContactViewModel(key = "contacts-view-model")
+            val viewModel = ViewModelFactory.provideContactViewModel(key = "contacts-view-model")
             val state by viewModel.state.collectAsState()
             val testUtils by inject<TestUtils>()
             ContactListScreen(

@@ -2,8 +2,6 @@ package com.kopylovis.kmmcomposemuliplatformexample.di
 
 import com.kopylovis.kmmcomposemuliplatformexample.utils.PlatformTestUtils
 import com.kopylovis.kmmcomposemuliplatformexample.utils.TestUtils
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -22,9 +20,4 @@ fun initKoin() {
 private val coreModule = module {
     single { TestUtils() }
     single { PlatformTestUtils() }
-}
-
-object ServiceLocator: KoinComponent {
-    val testUtils by inject<TestUtils>()
-    val platformUtils by inject<PlatformTestUtils>()
 }
