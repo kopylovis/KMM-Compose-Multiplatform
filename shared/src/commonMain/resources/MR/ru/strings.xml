@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="my_string">Моя строка локализации по умолчанию</string>
+    <string name="authenticator_tab">Аутентификатор</string>
+    <string name="passwords_tab">Пароли</string>
+</resources>

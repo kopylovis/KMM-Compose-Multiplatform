@@ -3,6 +3,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.compose")
     id("app.cash.sqldelight")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -41,7 +42,10 @@ kotlin {
                 implementation(compose.compiler.auto)
                 implementation(ProjectDependencies.JetBrains.atomicfu)
                 implementation(ProjectDependencies.Koin.core)
-                ProjectDependencies.Moko.list.forEach { mokoDep ->
+                ProjectDependencies.Moko.MVVM.list.forEach { mokoDep ->
+                    implementation(mokoDep)
+                }
+                ProjectDependencies.Moko.Resources.list.forEach { mokoDep ->
                     implementation(mokoDep)
                 }
                 implementation(ProjectDependencies.SQLDelite.runtime)
@@ -92,4 +96,8 @@ sqldelight {
             generateAsync.set(true)
         }
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.kopylovis.kmmcomposemultiplatformexample"
 }

@@ -31,9 +31,6 @@ class ContactListViewModel(
     ))
     val state = _state.asStateFlow()
 
-    var newContact: Contact? by mutableStateOf(null)
-        private set
-
     fun obtainEvent(event: ContactUIEvent) {
 
     }
