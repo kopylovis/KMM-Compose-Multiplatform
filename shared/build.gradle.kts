@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -39,7 +40,10 @@ kotlin {
                 implementation(compose.components.resources)
                 implementation(ProjectDependencies.JetBrains.atomicfu)
                 implementation(ProjectDependencies.Koin.core)
-                ProjectDependencies.Moko.list.forEach { mokoDep ->
+                ProjectDependencies.Moko.MVVM.list.forEach { mokoDep ->
+                    implementation(mokoDep)
+                }
+                ProjectDependencies.Moko.Resources.list.forEach { mokoDep ->
                     implementation(mokoDep)
                 }
                 ProjectDependencies.Voyager.list.forEach { voyagerDep ->
@@ -76,4 +80,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.kopylovis.kmmcomposemultiplatformexample"
 }

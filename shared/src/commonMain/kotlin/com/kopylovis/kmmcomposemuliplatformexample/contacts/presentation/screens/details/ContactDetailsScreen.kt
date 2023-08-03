@@ -10,6 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import cafe.adriel.voyager.core.screen.Screen
+import com.kopylovis.kmmcomposemultiplatformexample.MR
+import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.component.KoinComponent
 
 data class ContactDetailsScreen(val id: Int) : Screen, KoinComponent {
@@ -23,8 +25,9 @@ data class ContactDetailsScreen(val id: Int) : Screen, KoinComponent {
                 .background(Color.Red),
             contentAlignment = Alignment.Center
         ) {
+            val sd = stringResource(resource = MR.strings.my_string)
             Text(
-                text = "Contact position: $id"
+                text = "$sd\nContact position: $id"
             )
         }
     }

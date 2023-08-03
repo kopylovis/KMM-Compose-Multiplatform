@@ -28,12 +28,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.kopylovis.kmmcomposemuliplatformexample.contacts.domain.Contact
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.components.ContactListItem
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.contacts.ContactUIEvent
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.contacts.ContactUIState
 import com.kopylovis.kmmcomposemuliplatformexample.contacts.presentation.screens.details.ContactDetailsScreen
 import com.kopylovis.kmmcomposemuliplatformexample.core.presentation.ViewModelFactory
+import com.kopylovis.kmmcomposemuliplatformexample.presentation.extensions.rememberForeverLazyListState
 import com.kopylovis.kmmcomposemuliplatformexample.utils.TestUtils
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -51,7 +51,6 @@ object ContactListScreen: Screen, KoinComponent {
             val testUtils by inject<TestUtils>()
             ContactListScreen(
                 state = state,
-                newContact = viewModel.newContact,
                 onEvent = viewModel::obtainEvent
             )
         }
@@ -60,9 +59,8 @@ object ContactListScreen: Screen, KoinComponent {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ContactListScreen(
+private fun ContactListScreen(
     state: ContactUIState,
-    newContact: Contact?,
     onEvent: (ContactUIEvent) -> Unit
 ) {
     Scaffold(
@@ -83,6 +81,7 @@ fun ContactListScreen(
         val navigator = LocalNavigator.currentOrThrow
         val bottomSheetNavigator = LocalBottomSheetNavigator.current
         LazyColumn(
+            state = rememberForeverLazyListState(key = "codes-screen"),
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -103,8 +102,8 @@ fun ContactListScreen(
                         .clickable {
 //                            onEvent(ContactUIEvent.SelectContact(contact = contact))
                             val testScreen = ContactDetailsScreen(id = contact.id?.toInt() ?: -1)
-                            bottomSheetNavigator.show(screen = testScreen)
-//                            navigator.push(item = testScreen)
+//                            bottomSheetNavigator.show(screen = testScreen)
+                            navigator.push(item = testScreen)
                         }
                 )
             }

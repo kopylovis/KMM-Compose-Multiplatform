@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath(ProjectDependencies.Moko.Resources.plugin)
+    }
+}
 plugins {
     //trick: for the same plugin versions in all sub-modules
     id("com.android.application").version(ProjectDependencies.gradle_version).apply(false)
